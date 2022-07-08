@@ -1,8 +1,14 @@
+let lineBrushBool = false
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
+  if(lineBrushBool == true){
+  lineBrush()
+  }
+
   background(128, 204, 255);
 
   noStroke();
@@ -11,7 +17,7 @@ function draw() {
   circle(380, 15, 150);
 
   fill(79, 52, 32);
-  rect(100, 200, 30, 300);
+  rect(100, 200, 30, 220);
 
   stroke(0,0,0)
   line(150,210,150,250)
@@ -38,6 +44,8 @@ function draw() {
   circle(200, 340, 150);
   circle(300, 370, 150);
   circle(400, 335, 150);
+  circle(480,335,150)
+  circle(540,345,150)
 
   fill(217, 29, 9)
   triangle(277,260,316,260,296,225)
@@ -57,7 +65,21 @@ function draw() {
   circle(60,70,40)
   circle(75,55,40)
   circle(90,70,40)
+}
 
-  stroke(25, 56, 25)
-  line(1,330,400,330)
+function lineBrush(){
+  if(mouseIsPressed){
+    stroke('black')
+    strokeWeight(5)
+    line(pmouseX,pmouseY, mouseX,mouseY)
+  }
+}
+
+function keyTyped(){
+  if(key==='q'){
+    lineBrushBool = true
+  }
+  if(key==='s'){
+    save('landscape.jpg')
+  }
 }
